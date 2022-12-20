@@ -7,15 +7,15 @@ function TaskDetails() {
     const [task, setTask] = useState({})
     const [error, setError] = useState(null)
 
-    const params = useParams()
+    const params = useParams();
     const navigate = useNavigate();
     const { pathname } = useLocation();
-
+    console.log(params)
     useEffect(() => {
         const fetchTask = async () => {
             const res = await fetch(`/tasks/${params.id}`)
             const data = await res.json()
-
+            
             if(res.status === 404 ) {
                 navigate('/')
             }
