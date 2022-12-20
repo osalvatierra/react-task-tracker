@@ -51,7 +51,7 @@ const addTask = async (task) => {
   })
 
   const data = await res.json();
-
+  console.log(data)
   setTasks([...tasks, data])
   //  const id = Math.floor(Math.random() * 10000 ) + 1;
    

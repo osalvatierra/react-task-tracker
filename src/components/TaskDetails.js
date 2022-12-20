@@ -13,7 +13,7 @@ function TaskDetails() {
     
     useEffect(() => {
         const fetchTask = async () => {
-            const res = await fetch(`/tasks/${params.id}`)
+            const res = await fetch(`https://my-json-server.typicode.com/osalvatierra/tasks/tasks/${params.id}`)
             const data = await res.json()
             
             if(res.status === 404 ) {
@@ -24,7 +24,7 @@ function TaskDetails() {
             setLoading(false)
         }
         fetchTask()
-    })
+    }) 
 
     return loading ? (
         <h3>loading...</h3>
