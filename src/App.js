@@ -35,7 +35,7 @@ const fetchTasks = async () => {
 const fetchTask = async (id) => {
   const res = await fetch(`https://my-json-server.typicode.com/osalvatierra/tasks/${id}`)
   const data = await res.json();
-  
+      
   return data
 }
 
