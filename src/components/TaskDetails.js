@@ -24,7 +24,7 @@ function TaskDetails() {
             setLoading(false)
         }
         fetchTask()
-    }) 
+    }, []) 
 
     return loading ? (
         <h3>loading...</h3>
