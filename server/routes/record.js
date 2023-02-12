@@ -4,13 +4,15 @@ const express = require("express");
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /record.
 const recordRoutes = express.Router();
+const Task = require("../models/taskModel");
  
 // This will help us connect to the database
 const dbo = require("../db/conn");
+const { Router } = require("express");
  
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
- 
+
  
 // This section will help you get a list of all the records.
 recordRoutes.route("/tasks").get(function (req, res) {
@@ -19,6 +21,13 @@ recordRoutes.route("/tasks").get(function (req, res) {
    .collection("tasks")
    .find({})
    .toArray(function (err, result) {
+    // result.forEach(element => {
+    //   if(element.tasks) {
+    //     element.tasks.forEach(el => {
+    //         console.log(el);
+    //     });
+    // }
+    // });
      if (err) throw err;
      res.json(result);
    });
@@ -26,24 +35,28 @@ recordRoutes.route("/tasks").get(function (req, res) {
  
 // This section will help you get a single record by id
 recordRoutes.route("/tasks/:id").get(function (req, res) {
- let db_connect = dbo.getDb();
+ let db_connect = dbo.getDb("task-app");
  let myquery = { _id: ObjectId(req.params.id) };
  db_connect
    .collection("tasks")
    .findOne(myquery, function (err, result) {
      if (err) throw err;
+     //console.log(result)
      res.json(result);
    });
 });
- 
+
+
+
 // This section will help you create a new record.
-recordRoutes.route("/record/add").post(function (req, response) {
- let db_connect = dbo.getDb();
+recordRoutes.route("/tasks/add").post( function (req, response) {
+ let db_connect = dbo.getDb("task-app");
  let myobj = {
-   name: req.body.name,
-   position: req.body.position,
-   level: req.body.level,
+   text: req.body.text,
+   day: req.body.day,
+   reminder: req.body.reminder,
  };
+
  db_connect.collection("tasks").insertOne(myobj, function (err, res) {
    if (err) throw err;
    response.json(res);
@@ -52,15 +65,18 @@ recordRoutes.route("/record/add").post(function (req, response) {
  
 // This section will help you update a record by id.
 recordRoutes.route("/update/:id").post(function (req, response) {
- let db_connect = dbo.getDb();
+  console.log(req);
+ let db_connect = dbo.getDb("task-app");
  let myquery = { _id: ObjectId(req.params.id) };
+ console.log(myquery)
  let newvalues = {
    $set: {
-     name: req.body.name,
-     position: req.body.position,
-     level: req.body.level,
+    text: req.body.text,
+    day: req.body.day,
+    reminder: req.body.reminder,
    },
  };
+
  db_connect
    .collection("tasks")
    .updateOne(myquery, newvalues, function (err, res) {
@@ -71,10 +87,17 @@ recordRoutes.route("/update/:id").post(function (req, response) {
 });
  
 // This section will help you delete a record
-recordRoutes.route("/:id").delete((req, response) => {
- let db_connect = dbo.getDb();
+recordRoutes.route("/tasks/:id").delete(function(req, response) {
+ let db_connect = dbo.getDb("task-app");
+ let myobj = {
+  text: req.body.text,
+  day: req.body.day,
+  reminder: req.body.reminder,
+};
+
  let myquery = { _id: ObjectId(req.params.id) };
- db_connect.collection("records").deleteOne(myquery, function (err, obj) {
+ console.log(myquery);
+ db_connect.collection("tasks").deleteOne(myquery, function (err, obj) {
    if (err) throw err;
    console.log("1 document deleted");
    response.json(obj);
