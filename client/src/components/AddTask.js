@@ -40,7 +40,7 @@ const AddTask = ({addTask, fetchTasks, getTasks}) => {
           reminder: form.reminder,
         }
         
-        client.post('http://localhost:5001/tasks/add', newTask)
+        axios.post('/tasks/add', newTask)
         .then(res => {
           // Fetch Tasks
           (async () => {
