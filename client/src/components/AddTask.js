@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: "http://localhost:5001" 
+  baseURL: "https://react-task-tracker-orpin.vercel.app" 
 });
 
 const AddTask = ({addTask, fetchTasks, getTasks}) => {
@@ -40,7 +40,7 @@ const AddTask = ({addTask, fetchTasks, getTasks}) => {
           reminder: form.reminder,
         }
         
-        axios.post('/tasks/add', newTask)
+        client.post('https://react-task-tracker-orpin.vercel.app/tasks/add', newTask)
         .then(res => {
           // Fetch Tasks
           (async () => {

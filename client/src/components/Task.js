@@ -6,7 +6,7 @@ import axios from "axios";
 const Task = ({ task, fetchTasks, deleteTask, toggleReminder }) => {
   // Fetch Task, singular
   const fetchTask = async () => {
-    const res = await fetch(`/tasks/${task._id}`)
+    const res = await fetch(`https://react-task-tracker-orpin.vercel.app/tasks/${task._id}`)
     const data = await res.json();
     console.log(data)
     return data
@@ -14,7 +14,7 @@ const Task = ({ task, fetchTasks, deleteTask, toggleReminder }) => {
 
   const deleteT = async (e) => {
     e.preventDefault();
-    await axios.delete(`/tasks/${task._id}` ).then(res => {
+    await axios.delete(`https://react-task-tracker-orpin.vercel.app/tasks/${task._id}` ).then(res => {
       // Update State with new Task List
         (async () => {
           const tasksFromServer = await fetchTasks();
@@ -28,7 +28,7 @@ const Task = ({ task, fetchTasks, deleteTask, toggleReminder }) => {
       const taskToToggle = await fetchTask();
       let upDTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
       
-      await axios.post(`/update/${task._id}`, upDTask).then(res => {
+      await axios.post(`https://react-task-tracker-orpin.vercel.app/update/${task._id}`, upDTask).then(res => {
         console.log(res)
         
         const getTasks = async () => {

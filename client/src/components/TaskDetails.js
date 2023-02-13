@@ -14,7 +14,7 @@ function TaskDetails() {
     
     useEffect(() => {
         const fetchTask = async (id) => {
-            const res = await fetch(`/tasks/${params.id}`)
+            const res = await fetch(`https://react-task-tracker-orpin.vercel.app/tasks/${params.id}`)
             const data = await res.json()
             
             if(res.status === 404 ) {

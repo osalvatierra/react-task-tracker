@@ -15,7 +15,7 @@ const ObjectId = require("mongodb").ObjectId;
 
  
 // This section will help you get a list of all the records.
-recordRoutes.route("/tasks").get(function (req, res) {
+recordRoutes.route("https://react-task-tracker-orpin.vercel.app/tasks").get(function (req, res) {
  let db_connect = dbo.getDb("task-app");
  db_connect
    .collection("tasks")
@@ -34,7 +34,7 @@ recordRoutes.route("/tasks").get(function (req, res) {
 });
  
 // This section will help you get a single record by id
-recordRoutes.route("/tasks/:id").get(function (req, res) {
+recordRoutes.route("https://react-task-tracker-orpin.vercel.app/tasks/:id").get(function (req, res) {
  let db_connect = dbo.getDb("task-app");
  let myquery = { _id: ObjectId(req.params.id) };
  db_connect
@@ -49,7 +49,7 @@ recordRoutes.route("/tasks/:id").get(function (req, res) {
 
 
 // This section will help you create a new record.
-recordRoutes.route("/tasks/add").post( function (req, response) {
+recordRoutes.route("https://react-task-tracker-orpin.vercel.app/tasks/add").post( function (req, response) {
  let db_connect = dbo.getDb("task-app");
  let myobj = {
    text: req.body.text,
@@ -64,7 +64,7 @@ recordRoutes.route("/tasks/add").post( function (req, response) {
 });
  
 // This section will help you update a record by id.
-recordRoutes.route("/update/:id").post(function (req, response) {
+recordRoutes.route("https://react-task-tracker-orpin.vercel.app/update/:id").post(function (req, response) {
   console.log(req);
  let db_connect = dbo.getDb("task-app");
  let myquery = { _id: ObjectId(req.params.id) };
@@ -87,7 +87,7 @@ recordRoutes.route("/update/:id").post(function (req, response) {
 });
  
 // This section will help you delete a record
-recordRoutes.route("/tasks/:id").delete(function(req, response) {
+recordRoutes.route("https://react-task-tracker-orpin.vercel.app/tasks/:id").delete(function(req, response) {
  let db_connect = dbo.getDb("task-app");
  let myobj = {
   text: req.body.text,
