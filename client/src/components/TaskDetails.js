@@ -14,7 +14,7 @@ function TaskDetails() {
     
     useEffect(() => {
         const fetchTask = async (id) => {
-            const res = await fetch(`http://localhost:10000/tasks/${params.id}`)
+            const res = await fetch(`/tasks/${params.id}`)
             const data = await res.json()
             
             if(res.status === 404 ) {
