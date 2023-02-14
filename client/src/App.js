@@ -22,7 +22,7 @@ useEffect(()=> {
 
 
 // Fetch Tasks
-const fetchTasks = async () => await axios.get('http://localhost:5001/tasks')
+const fetchTasks = async () => await axios.get('http://localhost:10000/tasks')
 .then((res) => {
    console.log(res.data) 
    return res.data;

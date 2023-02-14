@@ -1,9 +1,8 @@
 {
   "name": "react-task-tracker",
-  "homepage": "https://task-tracker-fawn.vercel.app/",
+  "homepage": "https://react-task-tracker-yet1.onrender.com/",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

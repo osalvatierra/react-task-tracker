@@ -6,7 +6,7 @@ import axios from "axios";
 const Task = ({ task, fetchTasks, deleteTask, toggleReminder }) => {
   // Fetch Task, singular
   const fetchTask = async () => {
-    const res = await fetch(`http://localhost:5001/tasks/${task._id}`)
+    const res = await fetch(`http://localhost:10000/tasks/${task._id}`)
     const data = await res.json();
     console.log(data)
     return data
@@ -14,12 +14,12 @@ const Task = ({ task, fetchTasks, deleteTask, toggleReminder }) => {
 
   const deleteT = async (e) => {
     e.preventDefault();
-    await axios.delete(`http://localhost:5001/tasks/${task._id}` ).then(res => {
+    await axios.delete(`http://localhost:10000/tasks/${task._id}` ).then(res => {
       // Update State with new Task List
         (async () => {
           const tasksFromServer = await fetchTasks();
           deleteTask(tasksFromServer);
-        })();
+        })(); 
     })   
   }
 
@@ -28,7 +28,7 @@ const Task = ({ task, fetchTasks, deleteTask, toggleReminder }) => {
       const taskToToggle = await fetchTask();
       let upDTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
       
-      await axios.post(`http://localhost:5001/update/${task._id}`, upDTask).then(res => {
+      await axios.post(`http://localhost:10000/update/${task._id}`, upDTask).then(res => {
         console.log(res)
         
         const getTasks = async () => {
