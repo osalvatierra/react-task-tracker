@@ -22,7 +22,7 @@ useEffect(()=> {
 
 
 // Fetch Tasks
-const fetchTasks = async () => await axios.get('/tasks')
+const fetchTasks = async () => await axios.get('https://react-task-tracker-server.onrender.com/tasks')
 .then((res) => {
    console.log(res.data) 
    return res.data;
