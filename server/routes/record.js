@@ -29,7 +29,7 @@ recordRoutes.route("/tasks").get(function (req, res) {
     // }
     // });
      if (err) throw err;
-     res.json(result);
+     return res.json(result);
    });
 });
  
@@ -42,7 +42,7 @@ recordRoutes.route("/tasks/:id").get(function (req, res) {
    .findOne(myquery, function (err, result) {
      if (err) throw err;
      //console.log(result)
-     res.json(result);
+     return res.json(result);
    });
 });
 
