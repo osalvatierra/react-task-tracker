@@ -22,11 +22,18 @@ useEffect(()=> {
 
 
 // Fetch Tasks
-const fetchTasks = () => axios.get('https://react-task-tracker-server.onrender.com/tasks')
-.then((res) => {
+const fetchTasks = async () => await axios.get('https://react-task-tracker-server.onrender.com/tasks')
+.then(res => {
    console.log(res.data) 
    return res.data;
   });
+
+//Rewriting Fetch
+// async getData() {
+//   const res = axios.get('https://react-task-tracker-server.onrender.com/tasks');
+//   const {data} = await res;
+  
+// }  
 
 //Updating State. Passing Props from Add Component
 const addTask = (newTasks) => {
