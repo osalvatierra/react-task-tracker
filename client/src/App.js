@@ -24,12 +24,13 @@ useEffect(()=> {
 // Fetch Tasks
 const fetchTasks = async () => await axios.get('https://react-task-tracker-server.onrender.com/tasks')
 .then(res => {
-   //console.log(res.data) 
+   console.log(res.data) 
     res.data;
-  }).catch(error => {
+  })
+  .catch(error => {
     console.log(error);
   });
-
+  fetchTasks();
 
 //Rewriting Fetch
 // async getData() {
