@@ -28,7 +28,7 @@ const fetchTasks = async () => await axios.get('https://react-task-tracker-serve
     res.data;
   }).catch(error => {
     console.log(error);
-  });;
+  });
 
 
 //Rewriting Fetch
