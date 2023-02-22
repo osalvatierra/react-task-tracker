@@ -15,7 +15,7 @@ const ObjectId = require("mongodb").ObjectId;
 
  
 // This section will help you get a list of all the records.
-recordRoutes.route("https://react-task-tracker-server.onrender.com/tasks").get(function (req, res) {
+recordRoutes.route("/tasks").get(function (req, res) {
  let db_connect = dbo.getDb("task-app");
  db_connect
    .collection("tasks")
