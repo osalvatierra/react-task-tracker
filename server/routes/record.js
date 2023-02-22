@@ -17,6 +17,7 @@ const ObjectId = require("mongodb").ObjectId;
 // This section will help you get a list of all the records.
 recordRoutes.route("/tasks").get(function (req, res) {
  let db_connect = dbo.getDb("task-app");
+ try {
  db_connect
    .collection("tasks")
    .find({})
@@ -28,9 +29,12 @@ recordRoutes.route("/tasks").get(function (req, res) {
     //     });
     // }
     // });
-     if (err) throw err;
+    
      return res.json(result);
-   });
+   }); 
+  } catch {
+    if (err) throw err;
+  }
 });
  
 // This section will help you get a single record by id
