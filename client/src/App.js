@@ -25,7 +25,7 @@ useEffect(()=> {
 const fetchTasks = async () => await axios.get('https://react-task-tracker-server.onrender.com/tasks')
 .then(res => {
    console.log(res.data) 
-    res.data;
+    return res.data;
   })
   .catch(error => {
     console.log(error);
