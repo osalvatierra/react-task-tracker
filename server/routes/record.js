@@ -32,7 +32,7 @@ recordRoutes.route("/tasks").get( async function (req, res) {
     
      return res.json(result);
    }); 
-  } catch {
+  } catch (err) {
     if (err) throw err;
   }
 });
