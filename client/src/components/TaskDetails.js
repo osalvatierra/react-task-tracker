@@ -14,7 +14,7 @@ function TaskDetails() {
     
     useEffect(() => {
         const fetchTask = async (id) => {
-            const res = await fetch(`https://react-task-tracker-server.onrender.com/tasks/${params.id}`)
+            const res = await fetch(`https://react-task-tracker-production.up.railway.app/tasks/${params.id}`)
             const data = await res.json()
             
             if(res.status === 404 ) {

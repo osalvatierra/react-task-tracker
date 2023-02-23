@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: "https://react-task-tracker-server.onrender.com/" 
+  baseURL: "https://react-task-tracker-production.up.railway.app" 
 });
 
 const AddTask = ({addTask, fetchTasks, getTasks}) => {
