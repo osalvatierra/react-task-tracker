@@ -5,9 +5,9 @@
   "main": "./client/build/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "npm install && cd build &&  CI=false npm run build --prefix client",
+    "client": "cd client && npm install && cd build && CI=false npm run build",
     "server": "npm start --prefix server",
-    "dev": "concurrently \"npm run client\" \"npm run server\""
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "engines": {
     "node": "16.x"
