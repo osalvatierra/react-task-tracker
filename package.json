@@ -5,7 +5,7 @@
   "main": "./client/build/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "cd client && npm install && cd build && CI=false npm run build",
+    "client": "cd client && npm install && cd build && CI=false npm run build && cd .. && npm start",
     "server": "npm start --prefix server",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
