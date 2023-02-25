@@ -2,10 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "React Task Tracker Server",
-  "main": "/",
+  "main": "./client/build/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "npm install && cd build && CI=false npm run build --prefix client",
+    "client": "npm install && cd build &&  CI=false npm run build --prefix client",
     "server": "npm start --prefix server",
     "dev": "concurrently \"npm run client\" \"npm run server\""
   },
