@@ -6,8 +6,8 @@
   "homepage": "./",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "npm install --prefix client && CI=false npm run build --prefix client",
-    "server": "npm start --prefix server",
+    "client": "cd client && npm install && CI=false npm run build && cd ..",
+    "server": "cd server && npm install && npm start && cd ..",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
     "start": "npm run start"
   },
