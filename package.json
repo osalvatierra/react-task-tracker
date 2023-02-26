@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "React Task Tracker Server",
   "main": "./client/build/index.html",
+  "homepage": "./",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm install --prefix client && CI=false npm run build --prefix client",
