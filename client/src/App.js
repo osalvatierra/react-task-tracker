@@ -22,7 +22,7 @@ useEffect(()=> {
 
 
 // Fetch Tasks
-const fetchTasks = async () => await axios.get('https://react-task-tracker-production.up.railway.app/tasks')
+const fetchTasks = async () => await axios.get('https://sick-badge-production.up.railway.app/tasks')
 .then(res => {
    console.log(res.data) 
     return res.data;
