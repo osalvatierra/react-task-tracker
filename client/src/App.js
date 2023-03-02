@@ -23,7 +23,7 @@ useEffect(()=> {
 }, [])
 
 // Fetch Task Singular
-const fetchTask = async () => await axios.get(`https://sick-badge-production.up.railway.app/tasks/${tasks._id}`)
+const fetchTask = async (id) => await axios.get(`https://sick-badge-production.up.railway.app/tasks/${tasks.id}`)
 .then(res => {
    console.log(res.data) 
     return res.data;
@@ -31,7 +31,7 @@ const fetchTask = async () => await axios.get(`https://sick-badge-production.up.
   .catch(error => {
     console.log(error);
   });
-  fetchTask();
+  
 
 // Fetch Tasks
 const fetchTasks = async () => await axios.get('https://sick-badge-production.up.railway.app/tasks')
