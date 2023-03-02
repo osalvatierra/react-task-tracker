@@ -25,7 +25,11 @@ const Task = ({ task, fetchTask, fetchTasks, deleteTask, toggleReminder }) => {
 
     const reminderToggle = async (e) => {
       e.preventDefault();
-      const taskToToggle = await fetchTask(task._id);
+      let taskToToggle;
+      (async () => {
+          taskToToggle = await fetchTask(task._id);
+      })(); 
+
       let upDTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
       
       await axios.post(`https://sick-badge-production.up.railway.app/update/${task._id}`, upDTask).then(res => {
