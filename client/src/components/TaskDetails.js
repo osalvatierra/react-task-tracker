@@ -5,12 +5,11 @@ import Button from "./Button";
 function TaskDetails() {
     const [loading, setLoading] = useState(true)
     const [task, setTask] = useState({})
-    const { pathname } = useLocation();
     const params = useParams();
-    
+    const navigate = useNavigate();
+    const { pathname } = useLocation();
+    console.log(params)
     useEffect(() => {
-        
-        const navigate = useNavigate();
         const fetchTask = async (id) => {
             const res = await fetch(`https://sick-badge-production.up.railway.app/tasks/${params.id}`)
             const data = await res.json()
