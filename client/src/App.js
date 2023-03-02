@@ -22,6 +22,16 @@ useEffect(()=> {
   getTasks();
 }, [])
 
+// Fetch Task Singular
+const fetchTask = async () => await axios.get(`https://sick-badge-production.up.railway.app/tasks/${tasks._id}`)
+.then(res => {
+   console.log(res.data) 
+    return res.data;
+  })
+  .catch(error => {
+    console.log(error);
+  });
+  fetchTask();
 
 // Fetch Tasks
 const fetchTasks = async () => await axios.get('https://sick-badge-production.up.railway.app/tasks')
@@ -72,6 +82,7 @@ const toggleReminder = async (tasksFromServer) => {
             <Tasks 
               tasks={tasks}
               fetchTasks={fetchTasks}
+              fetchTask={fetchTask}
               deleteTask={deleteTask} 
               toggleReminder={toggleReminder} /> : 'No Tasks To Show.'}
             </>

@@ -5,7 +5,7 @@ const client = axios.create({
   baseURL: "https://sick-badge-production.up.railway.app/" 
 });
 
-const AddTask = ({addTask, fetchTasks, getTasks}) => {
+const AddTask = ({addTask, fetchTasks}) => {
     const [form, setForm] = useState({
         text: "",
         day: "",

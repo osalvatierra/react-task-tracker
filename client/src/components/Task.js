@@ -3,14 +3,14 @@ import {Link} from 'react-router-dom';
 import axios from "axios";
 
 
-const Task = ({ task, fetchTasks, deleteTask, toggleReminder }) => {
+const Task = ({ task, fetchTask, fetchTasks, deleteTask, toggleReminder }) => {
   // Fetch Task, singular
-  const fetchTask = async () => {
-    const res = await fetch(`https://sick-badge-production.up.railway.app/tasks/${task._id}`)
-    const data = await res.json();
-    console.log(data)
-    return data
-  }
+  // const fetchTask = async () => {
+  //   const res = await fetch(`https://sick-badge-production.up.railway.app/tasks/${task._id}`)
+  //   const data = await res.json();
+  //   console.log(data)
+  //   return data
+  // }
 
   const deleteT = async (e) => {
     e.preventDefault();
