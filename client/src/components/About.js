@@ -1,4 +1,3 @@
-import { Navigate } from "react-router-dom";
 import Button from "./Button";
 
 export const About = () => {
