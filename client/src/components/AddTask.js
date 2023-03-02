@@ -12,7 +12,6 @@ const AddTask = ({addTask, fetchTasks, getTasks}) => {
         day: "",
         reminder: false,
       });   
-      const navigate = useNavigate();
       
       function updateForm(value) {
         return setForm((prev) => {
