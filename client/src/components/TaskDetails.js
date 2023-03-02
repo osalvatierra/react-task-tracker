@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation} from "react-router-dom";
+import { useParams, useNavigate, useLocation} from "react-router-dom";
 import Button from "./Button";
 
 function TaskDetails() {
     const [loading, setLoading] = useState(true)
     const [task, setTask] = useState({})
 
+    const params = useParams();
     const navigate = useNavigate();
     const { pathname } = useLocation();
     
