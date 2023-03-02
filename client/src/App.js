@@ -88,7 +88,7 @@ const toggleReminder = async (tasksFromServer) => {
             </>
           }/>
 
-      <Route path='/tasks/:id' element={<TaskDetails />} />
+      <Route path='/tasks/:id' element={<TaskDetails fetchTask={fetchTask} />} />
       <Route path='/about' element={<About />} />
       </Routes>
       <Footer />
