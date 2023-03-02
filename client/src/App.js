@@ -11,12 +11,14 @@ import TaskDetails from "./components/TaskDetails";
 function App() {
 const [showAddTask, setShowAddTask] = useState(false);
 const [tasks, setTasks ] = useState([]);  
-const getTasks = async () => {
-  const tasksFromServer = await fetchTasks();
-  setTasks(tasksFromServer)
-}
 
 useEffect(()=> {
+  const getTasks = async () => {
+    const tasksFromServer = await fetchTasks();
+    setTasks(tasksFromServer)
+  }
+
+
   getTasks();
 }, [])
 
