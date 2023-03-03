@@ -11,7 +11,7 @@ const Task = ({ task, fetchTask, fetchTasks, deleteTask, toggleReminder }) => {
   //   console.log(data)
   //   return data
   // }
-  const fetchTask = async () => fetchTask(task._id);
+ 
 
   const deleteT = async (e) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ const Task = ({ task, fetchTask, fetchTasks, deleteTask, toggleReminder }) => {
       //    return tasksFromServer;
       // };
       
-      const taskToToggle = await fetchTask();
+      const taskToToggle = await fetchTask(task._id);
 
       let upDTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
       
