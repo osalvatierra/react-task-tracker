@@ -18,38 +18,15 @@ useEffect(()=> {
     setTasks(tasksFromServer)
   }
 
-
   getTasks();
 }, [])
 
-// Fetch Task Singular
-const fetchTask = async (id) => await axios.get(`https://sick-badge-production.up.railway.app/tasks/${tasks.id}`)
-.then(res => {
-   console.log(res.data) 
-    return res.data;
-  })
-  .catch(error => {
-    console.log(error);
-  });
-  
 
 // Fetch Tasks
 const fetchTasks = async () => await axios.get('https://sick-badge-production.up.railway.app/tasks')
-.then(res => {
-   console.log(res.data) 
-    return res.data;
-  })
-  .catch(error => {
-    console.log(error);
-  });
+.then(res =>res.data)
+  .catch(error => console.log(error));
   fetchTasks();
-
-//Rewriting Fetch
-// async getData() {
-//   const res = axios.get('https://react-task-tracker-server.onrender.com/tasks');
-//   const {data} = await res;
-  
-// }  
 
 //Updating State. Passing Props from Add Component
 const addTask = (newTasks) => {
@@ -82,13 +59,12 @@ const toggleReminder = async (tasksFromServer) => {
             <Tasks 
               tasks={tasks}
               fetchTasks={fetchTasks}
-              fetchTask={fetchTask}
               deleteTask={deleteTask} 
               toggleReminder={toggleReminder} /> : 'No Tasks To Show.'}
             </>
           }/>
 
-      <Route path='/tasks/:id' element={<TaskDetails fetchTask={fetchTask} />} />
+      <Route path='/tasks/:id' element={<TaskDetails />} />
       <Route path='/about' element={<About />} />
       </Routes>
       <Footer />

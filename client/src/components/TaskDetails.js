@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation} from "react-router-dom";
+import axios from "axios";
 import Button from "./Button";
 
 function TaskDetails() {
@@ -10,18 +11,13 @@ function TaskDetails() {
     const { pathname } = useLocation();
     console.log(params)
     useEffect(() => {
-        const fetchTask = async (id) => {
-            const res = await fetch(`https://sick-badge-production.up.railway.app/tasks/${params.id}`)
-            const data = await res.json()
-            
-            if(res.status === 404 ) {
-                navigate('/')
-            }
-            console.log(data)
-            setTask(data)
+        // Fetch singular w/ Axios
+        const singular = async (id) => await axios.get(`https://sick-badge-production.up.railway.app/tasks/${params.id}` ).then(res => {
+            setTask(res.data)
             setLoading(false)
-        }
-        fetchTask()
+            return res.data;
+        });
+        singular()
     }, []) 
 
     return loading ? (
