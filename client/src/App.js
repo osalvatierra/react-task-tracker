@@ -10,30 +10,23 @@ import TaskDetails from "./components/TaskDetails";
 
 function App() {
 const [showAddTask, setShowAddTask] = useState(false);
-const [tasks, setTasks ] = useState([]);  
+const [tasks, setTasks ] = useState([]);
 
 useEffect(()=> {
   const getTasks = async () => {
     const tasksFromServer = await fetchTasks();
-    setTasks(tasksFromServer)
+    setTasks(tasksFromServer);
   }
-
   getTasks();
+
 }, [])
 
 
-// Fetch Tasks
+// Fetch Tasks, used in AddTask and Tasks Component. Passed as Props for quick reference
 const fetchTasks = async () => await axios.get('https://sick-badge-production.up.railway.app/tasks')
 .then(res =>res.data)
   .catch(error => console.log(error));
-  fetchTasks();
-
-//Updating State. Passing Props from Add Component
-const addTask = (newTasks) => {
-     setTasks(newTasks);
-    console.log(newTasks)
-}
- 
+  
 //Updating State. Delete Task
 const deleteTask = (deleteT) => {
   setTasks(deleteT);
@@ -54,7 +47,7 @@ const toggleReminder = async (tasksFromServer) => {
           path="/" 
           element ={
             <>
-            {showAddTask && <AddTask addTask={addTask} fetchTasks={fetchTasks}/>}
+            {showAddTask && <AddTask setTasks={setTasks} fetchTasks={fetchTasks}/>}
             {tasks.length > 0 ? 
             <Tasks 
               tasks={tasks}

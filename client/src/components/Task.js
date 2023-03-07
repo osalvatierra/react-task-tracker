@@ -2,13 +2,16 @@ import { FaTimes } from 'react-icons/fa';
 import {Link} from 'react-router-dom';
 import axios from "axios";
 
+const client = axios.create({
+  baseURL: "https://sick-badge-production.up.railway.app/" 
+});
 
 const Task = ({ task, fetchTasks, deleteTask, toggleReminder }) => {
    // Fetch Task, singular w/ Axios
    const singular = async () => await axios.get(`https://sick-badge-production.up.railway.app/tasks/${task._id}` ).then(res => res.data);
   
   const deleteT = async (e) => {
-    await axios.delete(`https://sick-badge-production.up.railway.app/tasks/${task._id}` ).then(res => {
+    client.delete(`https://sick-badge-production.up.railway.app/tasks/${task._id}` ).then(res => {
       // Update State with new Task List
         (async () => {
           const tasksFromServer = await fetchTasks();
@@ -21,14 +24,12 @@ const Task = ({ task, fetchTasks, deleteTask, toggleReminder }) => {
       const taskToToggle = await singular();
       let upDTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
       
-      await axios.post(`https://sick-badge-production.up.railway.app/update/${task._id}`, upDTask).then(res => {
-        console.log(res)
-        
-        const getTasks = async () => {
+      client.post(`/update/${task._id}`, upDTask)
+      .then(res => {
+        (async () => {
           const tasksFromServer = await fetchTasks();
-          toggleReminder(tasksFromServer)
-        }; getTasks();
-        
+          toggleReminder(tasksFromServer);
+        })();        
       }).catch((err) => {
         console.log(err);
         return;

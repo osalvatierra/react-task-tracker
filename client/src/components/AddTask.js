@@ -5,7 +5,7 @@ const client = axios.create({
   baseURL: "https://sick-badge-production.up.railway.app/" 
 });
 
-const AddTask = ({addTask, fetchTasks}) => {
+const AddTask = ({setTasks, fetchTasks}) => {
     const [form, setForm] = useState({
         text: "",
         day: "",
@@ -17,10 +17,6 @@ const AddTask = ({addTask, fetchTasks}) => {
           return { ...prev, ...value };
         });
       }
-
-      // useEffect(()=> { 
-      //   console.log(form);
-      // }, [form]);
 
       function handleClick(event) {
         event.preventDefault();
@@ -43,7 +39,7 @@ const AddTask = ({addTask, fetchTasks}) => {
           // Fetch Tasks
           (async () => {
             const tasksFromServer = await fetchTasks();
-            addTask(tasksFromServer);
+            setTasks(tasksFromServer);
           })();
       
         }).catch((err) => {
