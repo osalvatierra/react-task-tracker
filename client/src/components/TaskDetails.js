@@ -15,7 +15,6 @@ function TaskDetails() {
         const singular = async (id) => await axios.get(`https://sick-badge-production.up.railway.app/tasks/${params.id}` ).then(res => {
             setTask(res.data)
             setLoading(false)
-            return res.data;
         });
         singular()
     }, []) 

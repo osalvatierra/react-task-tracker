@@ -9,7 +9,10 @@ const client = axios.create({
 const Task = ({ task, fetchTasks, deleteTask, toggleReminder }) => {
    // Fetch Task, singular w/ Axios
    const singular = async () => await axios.get(`https://sick-badge-production.up.railway.app/tasks/${task._id}` ).then(res => res.data);
-  
+
+  (async () => {
+    console.log( await singular())
+  })();   
   const deleteT = async (e) => {
     client.delete(`https://sick-badge-production.up.railway.app/tasks/${task._id}` ).then(res => {
       // Update State with new Task List
