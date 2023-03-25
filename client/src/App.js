@@ -23,7 +23,7 @@ useEffect(()=> {
 
 
 // Fetch Tasks, used in AddTask and Tasks Component. Passed as Props for quick reference
-const fetchTasks = async () => await axios.get('https://sick-badge-production.up.railway.app/tasks')
+const fetchTasks = async () => await axios.get('https://react-task-tracker-server.onrender.com/tasks')
 .then(res =>res.data)
   .catch(error => console.log(error));
   

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: "https://sick-badge-production.up.railway.app/" 
+  baseURL: "https://react-task-tracker-6rsb.onrender.com" 
 });
 
 const AddTask = ({setTasks, fetchTasks}) => {

@@ -12,7 +12,7 @@ function TaskDetails() {
     console.log(params)
     useEffect(() => {
         // Fetch singular w/ Axios
-        const singular = async (id) => await axios.get(`https://sick-badge-production.up.railway.app/tasks/${params.id}` ).then(res => {
+        const singular = async (id) => await axios.get(`https://react-task-tracker-server.onrender.com/tasks/${params.id}` ).then(res => {
             setTask(res.data)
             setLoading(false)
         });
