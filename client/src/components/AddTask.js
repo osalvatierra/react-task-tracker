@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
 const client = axios.create({
-  baseURL: "https://react-task-tracker-6rsb.onrender.com" 
+  baseURL: "http://localhost:5001" 
 });
 
 const AddTask = ({setTasks, fetchTasks}) => {

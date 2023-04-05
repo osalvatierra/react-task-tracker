@@ -9,6 +9,7 @@ import About from "./components/About";
 import TaskDetails from "./components/TaskDetails";
 
 function App() {
+
 const [showAddTask, setShowAddTask] = useState(false);
 const [tasks, setTasks ] = useState([]);
 
