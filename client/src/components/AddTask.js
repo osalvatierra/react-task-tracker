@@ -85,7 +85,7 @@ const AddTask = ({ setTasks, fetchTasks }) => {
       </div>
 
       <input
-        type="submit"
+        type="Submit"
         value="Save Task"
         className="btn btn-block"
         onClick={handleClick}
